@@ -1,6 +1,6 @@
 var util = require('util');
 var application = require('./application');
-var dataPlugin = require('pomelo-data-plugin');
+var dataPlugin = require('pomelo-data-plugin-ex');
 
 var createApp = function () {
   var app = application;
@@ -15,32 +15,36 @@ app.use(dataPlugin, {
   watcher: {
     dir: __dirname + '/config/data',
     idx: 'id',
-    interval: 3000
+    interval: 3000,
+    nameRow: 1,
+    typeRow: 3,
+    ignoreRows: [2, 4],
+    indexColumn: 1
   }
 });
 
 
 var cb = function() {
-  var npcTalkConf = null
-    , teamConf = null;
+  var heroInitConf = null;
 
   var getConf = function() {
-    npcTalkConf = app.get('dataService').get('npc_talk');
-    teamConf = app.get('dataService').get('team');
+      heroInitConf = app.get('dataService').get('Heroinit');
   };
 
   var printConf = function() {
-    console.warn('\n', (new Date()).getTime(), ': npcTalkConf = ', util.inspect(npcTalkConf, {showHidden: true, depth: null}))
-    console.warn('\n', (new Date()).getTime(), ': teamConf = ', util.inspect(teamConf, {showHidden: true, depth: null}))
+    console.warn('\n', (new Date()).getTime(), ': heroInitConf = ', util.inspect(heroInitConf, {showHidden: false, depth: null}));
     console.warn('==============================================');
   };
 
   getConf();
   printConf();
 
-  setInterval(function() {
-    getConf();
-    printConf(); }, 5000);
+  console.warn("find hero record where the hero id is equal to 1");
+  var heroRecord=heroInitConf.findByFunc(function (ele) {
+      return ele.heroId==1;
+  });
+  console.warn('\n', (new Date()).getTime(), ': heroRecord = ', util.inspect(heroRecord, {showHidden: false, depth: null}));
+
 };
 
 //start
