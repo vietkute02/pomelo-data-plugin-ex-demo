@@ -1,12 +1,12 @@
 {
-  "name": "pomelo-data-plugin-demo",
+  "name": "pomelo-data-plugin-ex-demo",
   "version": "0.1.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackiesun8/pomelo-data-plugin-demo.git"
+    "url": "https://github.com/jackiesun8/pomelo-data-plugin-ex-demo.git"
   },
   "dependencies": {
-    "pomelo-data-plugin-ex": "0.1.2"
+    "pomelo-data-plugin-ex": "0.1.4"
   }
 }
