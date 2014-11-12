@@ -7,6 +7,6 @@
     "url": "https://github.com/jackiesun8/pomelo-data-plugin-ex-demo.git"
   },
   "dependencies": {
-    "pomelo-data-plugin-ex": "0.1.4"
+    "pomelo-data-plugin-ex": "0.1.5"
   }
 }
